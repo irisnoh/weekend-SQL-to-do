@@ -10,9 +10,9 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/gi
 
 to do: 
 
-[] create html
-[] create server.js
-[] create database
-[] connect server to database
-[] connect dom to client js
-[] style
+[x] create html
+[x] create server.js
+[x] create database
+[x] connect server to database
+[x] connect dom to client js
+[x] style

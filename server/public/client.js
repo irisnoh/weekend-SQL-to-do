@@ -12,7 +12,7 @@ function onReady() {
 function onSubmit() {
     let taskToSend = {
         task: $('#taskInput').val(),
-        completed: $('#statusInput').val(),
+        completed: $('#statusSelect').val(),
     }
     postTask(taskToSend);
     console.log('submit was clicked');

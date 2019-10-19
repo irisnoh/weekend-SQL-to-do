@@ -14,7 +14,11 @@
     <h1>Weekend SQL to do</h1>
 
     <input placeholder = "Task" id = "taskInput">
-    <input placeholder = "Status" id = "statusInput">
+    <select id = "statusSelect">
+        <option value ="" disabled selected> Completed?</option>
+        <option value ="true"> True</option>
+        <option value ="false"> False</option>
+    </select>
     <button id = "submitButton">Submit</button>
 
     <h2>TASKS:</h2>
