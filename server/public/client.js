@@ -9,9 +9,12 @@ function onReady() {
     console.log('in jquery');
 }
 
-
 function onSubmit() {
-    getTask();
+    let taskToSend = {
+        task: $('#taskInput').val(),
+        status: $('#statusInout').val(),
+    }
+    getTask(taskToSend);
     console.log('submit was clicked');
 }
 function getTask() { // GET what is in my response from server to DOM
