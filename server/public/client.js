@@ -12,11 +12,27 @@ function onReady() {
 function onSubmit() {
     let taskToSend = {
         task: $('#taskInput').val(),
-        status: $('#statusInout').val(),
+        completed: $('#statusInput').val(),
     }
-    getTask(taskToSend);
+    postTask(taskToSend);
     console.log('submit was clicked');
 }
+
+function postTask(newTask) {
+    $.ajax({
+        type: 'POST',
+        url: '/task',
+        data: newTask,
+    }).then(function (response) {
+        console.log('response from Server', response);
+        console.log('in postTask function');
+        getTask();
+    }).catch(function (error) {
+        console.log ('Error in POST', error);
+    })
+ 
+}
+
 function getTask() { // GET what is in my response from server to DOM
     console.log('in getTask');
     $.ajax({
