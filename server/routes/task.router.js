@@ -49,7 +49,22 @@ taskRouter.post('/', (req, res) => {
         });
 });
 
+//PUT
 
+taskRouter.put('/:id', (req, res) => {
+    let task = req.body
+    let id = req.params.id
+
+    console.log(`Updating task ${id} with `, task);
+
+    pool.query(`UPDATE "task" SET "completed"='true' WHERE "id"=$1`, [id])
+    .then(() => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('Error with UPDATE task query', error);
+        res.sendStatus(500);
+    });
+})
 
 
 
