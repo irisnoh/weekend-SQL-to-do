@@ -53,11 +53,11 @@ taskRouter.post('/', (req, res) => {
 
 taskRouter.put('/:id', (req, res) => {
     let completed = req.body
-    let id = req.params.id
-
+    let id = req.params.id // id of the thing to update
+    let queryText = `UPDATE "to-do-list" SET "completed"='true' WHERE "id"=$1` // in database
     console.log(`Updating task ${id} with `, completed);
 
-    pool.query(`UPDATE "to-do-list" SET "completed"='true' WHERE "id"=$1`, [id])
+    pool.query(queryText, [id])
     .then(() => {
         res.sendStatus(200);
     }).catch((error) => {
@@ -67,8 +67,18 @@ taskRouter.put('/:id', (req, res) => {
 })
 
 
+// DELETE 
 
+taskRouter.delete('/:id', (req,res) => {
+    let id = req.params.id; // id of thing to delete
+    let queryText = `DELETE FROM "to-do-list" WHERE "id" = $1`; // in database
+    pool.query(queryText, [id])
+    .then(function (result) {
+        res.sendStatus(200); // sendstatus of Ok went through
+    })
+    console.log('Delete route called with id of', id);
 
+})
 
 
 

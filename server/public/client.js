@@ -6,6 +6,7 @@ function onReady() {
     $('#submitButton').on('click', onSubmit);
     getTask();
     $('#viewTask').on('click', '#completedButton', putTask);
+    $('#viewTask').on('click', '#deleteButton', deleteTask);
     console.log('in jquery');
 }
 
@@ -59,8 +60,13 @@ function appendTask(taskArray) {
         else if (task.completed == true) {
             colorthis = `<div data-id="${task.id}" class = "colorMe"></div>`
         }
-        stringToAppend = `<tr><td>${task.task}</td><td>${task.completed}</td>><td>${readyButton}</td>
-      <td><button id = "Delete"> Delete</button></td><td>${colorthis}</td></tr>`;
+        stringToAppend = `
+                        <tr><td>${task.task}</td>
+                        <td>${task.completed}</td>>
+                        <td>${readyButton}</td>
+                        <td><button data-id = "${task.id}" id = "deleteButton">Delete</button></td>
+                        <td>${colorthis}</td></tr>
+                        `;
 
         $('#viewTask').append(stringToAppend);
         //   $('#viewTask').css("background-color", "purple");
@@ -76,7 +82,7 @@ function appendTask(taskArray) {
 // </div>
 
 // PUT function
-function putTask () {
+function putTask() {
     console.log('will update completed status from false to true');
     let id = $(this).data().id;
     console.log(id);
@@ -88,5 +94,19 @@ function putTask () {
         getTask();
     }).catch(function (error) {
         console.log('error in PUT', error);
+    })
+}
+
+// DELETE function
+
+function deleteTask() {
+    let id = $(this).data().id;
+    console.log(id);
+    $.ajax({
+        method: 'DELETE',
+        url: `/task/${id}`
+    }).then(function() {
+        getTask();
+        console.log('im deleting something');
     })
 }
