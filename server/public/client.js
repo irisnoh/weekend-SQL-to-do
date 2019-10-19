@@ -54,18 +54,20 @@ function appendTask(taskArray) {
         let readyButton = '';
         let colorthis = '';
         console.log(task);
+        for (let i=0; i < task.length; i++)
         if (task.completed == false) {
+            $('#changeColorHere').css("background-color", "red")
             readyButton = `<button data-id="${task.id}" id="completedButton">Completed?</button>`
         }
-        else if (task.completed == true) {
-            colorthis = `<div data-id="${task.id}" class = "colorMe"></div>`
+        if (task.completed == true) {
+            $('#changeColorHere').css("background-color", "green")
         }
         stringToAppend = `
-                        <tr><td>${task.task}</td>
+                        <tr id = "changeColorHere"><td>${task.task}</td>
                         <td>${task.completed}</td>>
                         <td>${readyButton}</td>
                         <td><button data-id = "${task.id}" id = "deleteButton">Delete</button></td>
-                        <td>${colorthis}</td></tr>
+                        </tr>
                         `;
 
         $('#viewTask').append(stringToAppend);
@@ -83,6 +85,7 @@ function appendTask(taskArray) {
 
 // PUT function
 function putTask() {
+    $(this).parent().toggleClass('true')
     console.log('will update completed status from false to true');
     let id = $(this).data().id;
     console.log(id);

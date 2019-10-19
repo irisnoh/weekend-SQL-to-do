@@ -6,6 +6,13 @@ body {
     background-color: green;
 }
 
+.true {
+    background-color: green;
+}
+
+.false {
+    background-color: red;
+}
 
 table {
     font-family: 'Arial';
@@ -16,12 +23,19 @@ table {
     background-color: #f4f4f4;
 }
 
-    th, td {
+    th {
       color: #999;
       border: 1px solid #eee;
       padding: 12px 35px;
       border-collapse: collapse;
     }
+    td {
+        color: #999;
+        border: 1px solid #eee;
+        padding: 12px 35px;
+        border-collapse: collapse;
+    }
+
     th {
       background: #b3d9ff;
       color: #fff;
