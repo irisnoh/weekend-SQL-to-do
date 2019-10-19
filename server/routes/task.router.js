@@ -52,12 +52,12 @@ taskRouter.post('/', (req, res) => {
 //PUT
 
 taskRouter.put('/:id', (req, res) => {
-    let task = req.body
+    let completed = req.body
     let id = req.params.id
 
-    console.log(`Updating task ${id} with `, task);
+    console.log(`Updating task ${id} with `, completed);
 
-    pool.query(`UPDATE "task" SET "completed"='true' WHERE "id"=$1`, [id])
+    pool.query(`UPDATE "to-do-list" SET "completed"='true' WHERE "id"=$1`, [id])
     .then(() => {
         res.sendStatus(200);
     }).catch((error) => {

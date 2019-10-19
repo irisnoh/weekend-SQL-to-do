@@ -78,4 +78,15 @@ function appendTask(taskArray) {
 // PUT function
 function putTask () {
     console.log('will update completed status from false to true');
+    let id = $(this).data().id;
+    console.log(id);
+    $.ajax({
+        method: 'PUT',
+        url: `/task/${id}`
+    }).then(function (response) {
+        console.log(response)
+        getTask();
+    }).catch(function (error) {
+        console.log('error in PUT', error);
+    })
 }
