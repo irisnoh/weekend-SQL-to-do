@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +8,39 @@
     <title>weekend-sql-to-do</title>
     <script src="jquery.js"></script>
     <script src="client.js"></script>
-    <link rel = "stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
-    <h1>Weekend SQL to do</h1>
 
-    <input placeholder = "Task" id = "taskInput">
-    <select id = "statusSelect">
-        <option value ="" disabled selected> Completed?</option>
-        <option value ="true"> True</option>
-        <option value ="false"> False</option>
-    </select>
-    <button id = "submitButton">Submit</button>
+    <h1>Weekend SQL To Do: </h1>
+    <div class="container">
+        <input placeholder="Task" id="taskInput">
+        <select id="statusSelect">
+            <option value="" disabled selected> Completed?</option>
+            <option value="true"> True</option>
+            <option value="false"> False</option>
+        </select>
+        <button id="submitButton">Submit</button>
 
-    <h2>TASKS:</h2>
+        <h2>TASKS:</h2>
+    </div>
     <table>
-            <thead>
-              <tr>
-                <th>Tasks</th>
-                <th>Status</th>
-                <th>Completed?</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody id="viewTask">
-            </tbody>
-          </table>
-    
+        <thead>
+            <div class="tableHeader">
+                <tr>
+                    <th>Tasks</th>
+                    <th>Status</th>
+                    <th>Completed?</th>
+                    <th>Delete</th>
+                </tr>
+            </div>
+        </thead>
+        <tbody id="viewTask">
+        </tbody>
+    </table>
+
 </body>
+
 </html>

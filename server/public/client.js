@@ -57,15 +57,15 @@ function appendTask(taskArray) {
         console.log(task);
         if (task.completed == false) {
             readyButton = `<button data-id="${task.id}" id="completedButton">Completed?</button>`
-            color = `<tr data-id="${task.id} class ="redColorHere">`
+            color = `<tr data-id="${task.id}" class ="redColorHere">`
         }
         else if (task.completed == true) {
-            color = `<tr data-id="${task.id} class ="greenColorHere">`
+            color = `<tr data-id="${task.id}" class ="greenColorHere">`
         }
         stringToAppend = `
                     <tr id = "${color}">
                     <td>${task.task}</td>
-                    <td>${task.completed}</td>>
+                    <td> ${task.completed}</td>
                     <td>${readyButton}</td>
                     <td><button data-id = "${task.id}" id = "deleteButton">Delete</button></td>
                     </tr>
