@@ -45,3 +45,11 @@ table {
         border-right: none;
       }
     }
+
+    .redColorHere {
+        background-color: red;
+    }
+
+    .greenColorHere {
+        background-color: green;
+    }

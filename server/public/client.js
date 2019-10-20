@@ -47,45 +47,37 @@ function getTask() { // GET what is in my response from server to DOM
 
 } // end getTask
 
-
 function appendTask(taskArray) {
+    let id = $(this).data().id;
+
     $('#viewTask').empty();
     taskArray.forEach(function (task) {
         let readyButton = '';
-        let colorthis = '';
+
         console.log(task);
-        for (let i=0; i < task.length; i++)
         if (task.completed == false) {
-            $('#changeColorHere').css("background-color", "red")
             readyButton = `<button data-id="${task.id}" id="completedButton">Completed?</button>`
+            color = `<tr data-id="${task.id} class ="redColorHere">`
         }
-        if (task.completed == true) {
-            $('#changeColorHere').css("background-color", "green")
+        else if (task.completed == true) {
+            color = `<tr data-id="${task.id} class ="greenColorHere">`
         }
         stringToAppend = `
-                        <tr id = "changeColorHere"><td>${task.task}</td>
-                        <td>${task.completed}</td>>
-                        <td>${readyButton}</td>
-                        <td><button data-id = "${task.id}" id = "deleteButton">Delete</button></td>
-                        </tr>
-                        `;
-
+                    <tr id = "${color}">
+                    <td>${task.task}</td>
+                    <td>${task.completed}</td>>
+                    <td>${readyButton}</td>
+                    <td><button data-id = "${task.id}" id = "deleteButton">Delete</button></td>
+                    </tr>
+                    `;
         $('#viewTask').append(stringToAppend);
-        //   $('#viewTask').css("background-color", "purple");
-
     })
 }
 
-// $('#appendMe').append(`
-// <div data-id="${clicks}" class = "ketchup"> 
-//     <p>${clicks}</p> 
-//     <button id="yellowButton"> Yellow </button> 
-//     <button id="deleteButton">Delete</button>
-// </div>
 
 // PUT function
 function putTask() {
-    $(this).parent().toggleClass('true')
+    $(this).parent().toggleClass('true') //color change here
     console.log('will update completed status from false to true');
     let id = $(this).data().id;
     console.log(id);
@@ -108,7 +100,7 @@ function deleteTask() {
     $.ajax({
         method: 'DELETE',
         url: `/task/${id}`
-    }).then(function() {
+    }).then(function () {
         getTask();
         console.log('im deleting something');
     })
