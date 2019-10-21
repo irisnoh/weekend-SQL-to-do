@@ -4,13 +4,13 @@ $('document').ready(onReady);
 
 function onReady() {
     $('#submitButton').on('click', onSubmit);
-    getTask();
+    getTask(); // keep current tasks on DOM after refresh
     $('#viewTask').on('click', '#completedButton', putTask);
     $('#viewTask').on('click', '#deleteButton', deleteTask);
     console.log('in jquery');
 }
 
-function onSubmit() {
+function onSubmit() { // take in input values
     let taskToSend = {
         task: $('#taskInput').val(),
         completed: $('#statusSelect').val(),
@@ -19,7 +19,7 @@ function onSubmit() {
     console.log('submit was clicked');
 }
 
-function postTask(newTask) {
+function postTask(newTask) { // POST values from DOM to server side
     $.ajax({
         type: 'POST',
         url: '/task',
@@ -47,7 +47,7 @@ function getTask() { // GET what is in my response from server to DOM
 
 } // end getTask
 
-function appendTask(taskArray) {
+function appendTask(taskArray) { // append new string
     let id = $(this).data().id;
 
     $('#viewTask').empty();
@@ -57,10 +57,10 @@ function appendTask(taskArray) {
         console.log(task);
         if (task.completed == false) {
             readyButton = `<button data-id="${task.id}" id="completedButton">Completed?</button>`
-            color = `<tr data-id="${task.id}" class ="redColorHere">`
+            color = `<tr data-id="${task.id}" class ="redColorHere">` // change color
         }
         else if (task.completed == true) {
-            color = `<tr data-id="${task.id}" class ="greenColorHere">`
+            color = `<tr data-id="${task.id}" class ="greenColorHere">` // change color
         }
         stringToAppend = `
                     <tr id = "${color}">
@@ -77,8 +77,7 @@ function appendTask(taskArray) {
 
 // PUT function
 function putTask() {
-    $(this).parent().toggleClass('true') //color change here
-    console.log('will update completed status from false to true');
+    console.log('will update completed status from false to true'); // update from false to true
     let id = $(this).data().id;
     console.log(id);
     $.ajax({
