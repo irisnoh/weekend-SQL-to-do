@@ -1,12 +1,12 @@
-const pg = require('pg');
-const url = require('url');
+const pg = require('pg'); //bring in the thing that connects our DB
+const url = require('url'); 
 
-let config = {};
+let config = {}; // empty object
 
 if (process.env.DATABASE_URL) {
   // Heroku gives a url, not a connection object
   // https://github.com/brianc/node-pg-pool
-  const params = url.parse(process.env.DATABASE_URL);
+  const params = url.parse(process.env.DATABASE_URL); //if we have a process.env.database_url use that (in heroku)
   const auth = params.auth.split(':');
 
   config = {
