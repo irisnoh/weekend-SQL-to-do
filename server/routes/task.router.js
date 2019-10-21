@@ -37,7 +37,7 @@ taskRouter.get('/', (req, res) => {
 // POST
 taskRouter.post('/', (req, res) => {
     let newTask = req.body
-    console.log(`Adding koala`, newTask);
+    console.log(`Adding task`, newTask);
     let queryText = `INSERT INTO "to-do-list" ("task", "completed") VALUES ($1, $2);`;
     pool.query(queryText, [newTask.task, newTask.completed])
         .then(result => {
