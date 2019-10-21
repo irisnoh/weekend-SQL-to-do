@@ -1,5 +1,5 @@
 # SQL - TO - DO - LIST
-![To Do List interface](images/weekend-sql-image.png)
+![To Do List interface](images/weekend-sql-image-interface.png)
 
 ## Description
 
