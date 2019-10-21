@@ -67,9 +67,10 @@ table {
     thead {
         background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
     }
+
 .redColorHere {
-        color:  #FDDFDF;
+        color:  #FF9AA2;
 }
 .greenColorHere {
-       color: #DEFDE0;
+       color: #76A653;
 }
